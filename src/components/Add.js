@@ -7,10 +7,12 @@ class Add extends Component {
 		super(props)
 		this.state = {
 			name: '',
-			tagline: ''
+			tagline: '',
+			id: ''
 		}
 		this.newName = this.newName.bind(this)
 		this.newTagLine = this.newTagLine.bind(this)
+		this.newID = this.newID.bind(this)
 		this.onSubmit = this.onSubmit.bind(this)
 	}
 	newName(event) {
@@ -19,10 +21,14 @@ class Add extends Component {
 	newTagLine(event) {
 		this.setState({ tagline: event.target.value })
 	}
+	newID(event) {
+		this.setState({ id: event.target.value })
+	}
 
 	onSubmit(event) {
 		event.preventDefault()
 		const newRecipe = {
+			id: this.state.id,
 			name: this.state.name,
 			tagline: this.state.tagline
 		}
@@ -35,8 +41,9 @@ class Add extends Component {
 		return(
 			<div>
 				<form onSubmit={this.onSubmit}>
-					<input className='inputs' placeholder='Recipe Name' value={this.state.name} onChange={this.newName}></input>
-					<input className='inputs' placeholder='Tag Line' value={this.state.tagline} onChange={this.newTagLine}></input>
+					<input className='inputs' placeholder='Recipe Name' value={this.state.name} onChange={this.newName} required></input>
+					<input className='inputs' placeholder='Tag Line' value={this.state.tagline} onChange={this.newTagLine} required></input>
+					<input className='inputs' placeholder='ID Number' value={this.state.id} onChange={this.newID} required></input>
 
 					<input className='inputs' placeholder='ABV'></input>
 					<input className='inputs' placeholder='IBUs'></input>
