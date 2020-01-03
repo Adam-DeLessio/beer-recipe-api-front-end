@@ -1,15 +1,24 @@
 h3 {
-
+	margin: 20px 0 0 20px;
+}
+p {
+	margin: 20px;
+}
+.recipeLink {
+	text-decoration: none;
+	color: black;
 }
 .recipe {
-	/*height: 50px;*/
-	/*width: 300px;*/
-	background-color: red;
+	width: 500px;
+	background-color: rgba(0,0,0,0.1);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
 }
 .recipesList {
 	display: grid;
-	grid-template-columns: 150px 150px 150px 150px;
+	grid-template-columns: 500px 500px;
 	justify-content: center;
 	grid-gap: 30px;
-	margin: 30px 0;
+	margin: 50px 0;
 }

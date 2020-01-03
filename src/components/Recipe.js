@@ -32,6 +32,7 @@ class Recipe extends Component {
 					<Link className='recipeLink' to={'/RecipePage/' + item.id}>
 						<div className='recipe'>
 							<h3>{item.name}</h3>
+							<p>{item.description}</p>
 						</div>
 					</Link>
 
