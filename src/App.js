@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import Recipe from './components/Recipe'
 import RecipePage from './components/RecipePage'
 import Home from './components/Home'
+import Add from './components/Add'
 
 class App extends Component {
   // constructor(props) {
@@ -21,6 +22,9 @@ class App extends Component {
           <Link className='recipes' to={'/Recipe'}>
             <h2>Recipes</h2>
           </Link>
+          <Link className='add' to={'/Add'}>
+            <h2>Add Recipe</h2>
+          </Link>
         </nav>
 
         <main className='main'>
@@ -34,6 +38,7 @@ class App extends Component {
               />
             )} 
           />
+          <Route path='/Add' component={Add} />
           <Route 
             path={'/RecipePage/:id'}
             render={props => (
