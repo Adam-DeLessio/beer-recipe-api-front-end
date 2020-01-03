@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Route, Link } from 'react-router-dom';
+import Recipe from './components/Recipe'
+import RecipePage from './components/RecipePage'
+import Home from './components/Home'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {}
+  // }
+
+  render() {
+    return(
+      <div className='appContainer'>
+        <nav>
+          <Link className='home' to={'/'}>
+            <h2>Home</h2>
+          </Link>
+          <Link className='recipes' to={'/Recipe'}>
+            <h2>Recipes</h2>
+          </Link>
+        </nav>
+
+        <main className='main'>
+
+          
+          <Route path='/' exact component={Home} />
+          <Route 
+            path='/Recipe'
+            render={props => (
+              <Recipe 
+                {...props} 
+              />
+            )} 
+          />
+        </main>
+
+      </div>
+    )
+  }
 }
+
+
+
+
+
+
+
+
+
 
 export default App;

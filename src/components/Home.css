@@ -1,0 +1,21 @@
+.openScreen {
+	width: 100vw;
+	height: 90vh;
+	background-color: lightgray;
+}
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.quote {
+	width: 90vw;
+	line-height: 90px;
+	text-align: center;
+	font-size: 80px;
+	font-family: 'Italianno'
+}
+.TJ {
+	margin: 0;
+}
