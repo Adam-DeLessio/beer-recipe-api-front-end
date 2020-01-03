@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './Add.css' 
+import Axios from 'axios'
 
 class Add extends Component {
 	constructor(props) {
@@ -9,6 +10,8 @@ class Add extends Component {
 			tagline: ''
 		}
 		this.newName = this.newName.bind(this)
+		this.newTagLine = this.newTagLine.bind(this)
+		this.onSubmit = this.onSubmit.bind(this)
 	}
 	newName(event) {
 		this.setState({ name: event.target.value })
@@ -17,12 +20,23 @@ class Add extends Component {
 		this.setState({ tagline: event.target.value })
 	}
 
+	onSubmit(event) {
+		event.preventDefault()
+		const newRecipe = {
+			name: this.state.name,
+			tagline: this.state.tagline
+		}
+		Axios.post('https://beer-recipe-api.herokuapp.com/Add', newRecipe).then(res => console.log(res))
+	}
+
+
+
 	render() {
 		return(
 			<div>
-				<form>
-					<input className='inputs' placeholder='Recipe Name'></input>
-					<input className='inputs' placeholder='Tag Line'></input>
+				<form onSubmit={this.onSubmit}>
+					<input className='inputs' placeholder='Recipe Name' value={this.state.name} onChange={this.newName}></input>
+					<input className='inputs' placeholder='Tag Line' value={this.state.tagline} onChange={this.newTagLine}></input>
 
 					<input className='inputs' placeholder='ABV'></input>
 					<input className='inputs' placeholder='IBUs'></input>
@@ -40,7 +54,7 @@ class Add extends Component {
 					<input className='inputs' placeholder='Contributed By'></input>			
 
 					<div>
-						<button className='button'>Add Recipe</button>
+						<button type='submit' className='button'>Add Recipe</button>
 					</div>		
 				</form>
 			</div>

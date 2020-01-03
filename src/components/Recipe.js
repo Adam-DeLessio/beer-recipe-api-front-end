@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Recipe.css';
-import { Route } from 'react-router-dom';
-import RecipePage from './RecipePage'
+// import { Route } from 'react-router-dom';
+// import RecipePage from './RecipePage'
 
 const url = 'https://beer-recipe-api.herokuapp.com'
 

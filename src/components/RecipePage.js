@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./RecipePage.css";
-import { Link } from 'react-router-dom';
-import Recipe from './Recipe'
+// import { Link } from 'react-router-dom';
+// import Recipe from './Recipe'
 
 
 class RecipePage extends Component {
