@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import './Recipe.css';
+import './Recipe.css';
 import { Route } from 'react-router-dom';
+import RecipePage from './RecipePage'
 
 const url = 'https://beer-recipe-api.herokuapp.com'
 
@@ -33,6 +34,7 @@ class Recipe extends Component {
 							<h3>{item.name}</h3>
 						</div>
 					</Link>
+
 				</div>
 			)
 		})

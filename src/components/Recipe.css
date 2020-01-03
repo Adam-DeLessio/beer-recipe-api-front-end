@@ -1,12 +1,12 @@
 h3 {
 
 }
-.brewery {
+.recipe {
 	/*height: 50px;*/
 	/*width: 300px;*/
 	background-color: red;
 }
-.breweriesList {
+.recipesList {
 	display: grid;
 	grid-template-columns: 150px 150px 150px 150px;
 	justify-content: center;

@@ -1,26 +1,25 @@
 import React, { Component } from "react";
-// import "./RecipePage.css";
+import "./RecipePage.css";
 import { Link } from 'react-router-dom';
+import Recipe from './Recipe'
 
 
 class RecipePage extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			name: null
+			recipe: []
 		}
 	}
 
   componentDidMount() {
   	let id = this.props.match.params.id
-
-
     let newUrl = 'https://beer-recipe-api.herokuapp.com/id/' + id
 
     fetch(newUrl)
       .then(res => res.json())
       .then(res => {
-      	this.setState({ name: res[0].name })
+      	this.setState({ recipe: res[0] })
       })
       .catch(err => {
         console.error(err)
@@ -30,7 +29,8 @@ class RecipePage extends Component {
   render() {
     return(
       <div>
-        <h1>{this.state.name}</h1>
+        <h1>{this.state.recipe.name}</h1>
+        <h3>{this.state.recipe.tagline}</h3>
       </div>
     )
   }

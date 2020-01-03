@@ -25,7 +25,6 @@ class App extends Component {
 
         <main className='main'>
 
-          
           <Route path='/' exact component={Home} />
           <Route 
             path='/Recipe'
@@ -35,17 +34,21 @@ class App extends Component {
               />
             )} 
           />
+          <Route 
+            path={'/RecipePage/:id'}
+            render={props => (
+              <RecipePage
+                {...props}
+              />
+            )}
+          />
+
         </main>
 
       </div>
     )
   }
 }
-
-
-
-
-
 
 
 
