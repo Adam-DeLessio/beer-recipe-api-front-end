@@ -40,7 +40,7 @@ class App extends Component {
           />
           <Route path='/Add' component={Add} />
           <Route 
-            path={'/RecipePage/:id'}
+            path={'/RecipePage/:_id'}
             render={props => (
               <RecipePage
                 {...props}

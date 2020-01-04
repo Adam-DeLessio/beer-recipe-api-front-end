@@ -13,8 +13,8 @@ class RecipePage extends Component {
 	}
 
   componentDidMount() {
-  	let id = this.props.match.params.id
-    let newUrl = 'https://beer-recipe-api.herokuapp.com/id/' + id
+  	let id = this.props.match.params._id
+    let newUrl = 'https://beer-recipe-api.herokuapp.com/_id/' + id
 
     fetch(newUrl)
       .then(res => res.json())

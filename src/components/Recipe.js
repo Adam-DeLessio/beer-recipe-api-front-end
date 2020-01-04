@@ -28,8 +28,8 @@ class Recipe extends Component {
 	render() {
 		let recipes = this.state.recipes.map(item => {
 			return(
-				<div key={item.id} className='recipesContainer'>
-					<Link className='recipeLink' to={'/RecipePage/' + item.id}>
+				<div key={item._id} className='recipesContainer'>
+					<Link className='recipeLink' to={'/RecipePage/' + item._id}>
 						<div className='recipe'>
 							<h3>{item.name}</h3>
 							<p>{item.description}</p>

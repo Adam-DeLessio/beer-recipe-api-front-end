@@ -28,7 +28,6 @@ class Add extends Component {
 	onSubmit(event) {
 		event.preventDefault()
 		const newRecipe = {
-			id: this.state.id,
 			name: this.state.name,
 			tagline: this.state.tagline
 		}
@@ -43,7 +42,6 @@ class Add extends Component {
 				<form onSubmit={this.onSubmit}>
 					<input className='inputs' placeholder='Recipe Name' value={this.state.name} onChange={this.newName} required></input>
 					<input className='inputs' placeholder='Tag Line' value={this.state.tagline} onChange={this.newTagLine} required></input>
-					<input className='inputs' placeholder='ID Number' value={this.state.id} onChange={this.newID} required></input>
 
 					<input className='inputs' placeholder='ABV'></input>
 					<input className='inputs' placeholder='IBUs'></input>
