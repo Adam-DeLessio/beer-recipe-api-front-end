@@ -12,8 +12,8 @@ class Add extends Component {
 		}
 		this.newName = this.newName.bind(this)
 		this.newTagLine = this.newTagLine.bind(this)
-		this.newID = this.newID.bind(this)
 		this.onSubmit = this.onSubmit.bind(this)
+		this.addMalt = document.querySelector(".addedMalt")
 		this.newMalt = this.newMalt.bind(this)
 		this.submitMalt = this.submitMalt.bind(this)
 	}
@@ -39,15 +39,15 @@ class Add extends Component {
 	}
 
 	newMalt(event) {
-		this.setState({ newMalt: event.target.value })
+		this.setState({ maltName: event.target.value })
 	}
 	submitMalt(event) {
 		event.preventDefault()
 		const newMalt = {
 			name: this.state.maltName
 		}
-		console.log('added')
-		// document.querySelector('.addedMalt').appendChild(newMalt)
+
+		this.addMalt.appendChild(newMalt)
 		this.setState({ newMalt: '' })
 	}
 
@@ -78,7 +78,7 @@ class Add extends Component {
 							<h3>Add Malt</h3>
 							<div className='ingredientForm'>
 								<h4>Name: </h4>
-								<input className='ingredientInput' value={this.state.maltName} onChange={this.newMalt}/>
+								<input className='ingredientInput' placeholder='Malt Name' value={this.state.maltName} onChange={this.newMalt}/>
 								<h4>Amount: </h4>
 								<input className='amountInput'/>
 								<select>
