@@ -68,7 +68,7 @@ class RecipePage extends Component {
         <h3>Brewer's Tips</h3>
         <p>{this.state.recipe.brewers_tips}</p>
         <div className='container'>
-          <section className='ingredients'>
+          <section className='ingredientsList'>
             <h3>Malts</h3>
             <div>
               <ul>{malts}</ul>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './Add.css' 
 import Axios from 'axios'
+import ReactDOM from 'react-dom'
 
 class Add extends Component {
 	constructor(props) {
@@ -8,13 +9,16 @@ class Add extends Component {
 		this.state = {
 			name: '',
 			tagline: '',
-			maltName: ''
+			maltName: '',
+			maltAmount: '',
+			maltUnit: '',
+			maltList: []
 		}
 		this.newName = this.newName.bind(this)
 		this.newTagLine = this.newTagLine.bind(this)
 		this.onSubmit = this.onSubmit.bind(this)
-		this.addMalt = document.querySelector(".addedMalt")
-		this.newMalt = this.newMalt.bind(this)
+		this.newMaltName = this.newMaltName.bind(this)
+		this.newMaltAmount = this.newMaltAmount.bind(this)
 		this.submitMalt = this.submitMalt.bind(this)
 	}
 	newName(event) {
@@ -38,17 +42,21 @@ class Add extends Component {
 		this.setState({ name: '' })
 	}
 
-	newMalt(event) {
+	newMaltName(event) {
 		this.setState({ maltName: event.target.value })
+	}
+	newMaltAmount(event) {
+		this.setState({ maltAmount: event.target.value })
 	}
 	submitMalt(event) {
 		event.preventDefault()
-		const newMalt = {
-			name: this.state.maltName
-		}
+		let newMalt = `Name: ${this.state.maltName} Amount: ${this.state.maltAmount}`
+		this.setState({ maltList: [...this.state.maltList, newMalt] })
 
-		this.addMalt.appendChild(newMalt)
-		this.setState({ newMalt: '' })
+		// let createMalt = React.createElement('div', {}, this.state.maltName)
+		// ReactDOM.render(createMalt, document.getElementById('addedMalt'))
+		this.setState({ maltName: '' })
+		this.setState({ maltAmount: '' })
 	}
 
 
@@ -78,9 +86,9 @@ class Add extends Component {
 							<h3>Add Malt</h3>
 							<div className='ingredientForm'>
 								<h4>Name: </h4>
-								<input className='ingredientInput' placeholder='Malt Name' value={this.state.maltName} onChange={this.newMalt}/>
+								<input className='ingredientInput' placeholder='Malt Name' value={this.state.maltName} onChange={this.newMaltName} />
 								<h4>Amount: </h4>
-								<input className='amountInput'/>
+								<input className='amountInput' placeholder='Amt' value={this.state.maltAmount} onChange={this.newMaltAmount} />
 								<select>
 									<option>kg</option>
 									<option>oz</option>
@@ -88,7 +96,7 @@ class Add extends Component {
 								</select>
 								<button type='button' onClick={this.submitMalt} className='addIngredient'>Add</button>
 							</div>
-							<div className='addedMalt'></div>
+							<div id='addedMalt' className='addedMalt'>{this.state.maltList}</div>
 						</div>
 
 						<div className='hops'>

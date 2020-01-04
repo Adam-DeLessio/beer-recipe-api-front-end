@@ -24,6 +24,10 @@ form {
 .malts {
 	border: 2px solid black;
 }
+.addedMalt {
+	display: flex;
+	flex-direction: column;
+}
 .hops {
 	border: 2px solid black;
 }
