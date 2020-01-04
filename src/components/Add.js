@@ -8,12 +8,14 @@ class Add extends Component {
 		this.state = {
 			name: '',
 			tagline: '',
-			id: ''
+			maltName: ''
 		}
 		this.newName = this.newName.bind(this)
 		this.newTagLine = this.newTagLine.bind(this)
 		this.newID = this.newID.bind(this)
 		this.onSubmit = this.onSubmit.bind(this)
+		this.newMalt = this.newMalt.bind(this)
+		this.submitMalt = this.submitMalt.bind(this)
 	}
 	newName(event) {
 		this.setState({ name: event.target.value })
@@ -32,35 +34,89 @@ class Add extends Component {
 			tagline: this.state.tagline
 		}
 		Axios.post('https://beer-recipe-api.herokuapp.com/Add', newRecipe).then(res => console.log(res))
+
+		this.setState({ name: '' })
 	}
 
+	newMalt(event) {
+		this.setState({ newMalt: event.target.value })
+	}
+	submitMalt(event) {
+		event.preventDefault()
+		const newMalt = {
+			name: this.state.maltName
+		}
+		console.log('added')
+		// document.querySelector('.addedMalt').appendChild(newMalt)
+		this.setState({ newMalt: '' })
+	}
 
 
 	render() {
 		return(
 			<div>
 				<form onSubmit={this.onSubmit}>
-					<input className='inputs' placeholder='Recipe Name' value={this.state.name} onChange={this.newName} required></input>
-					<input className='inputs' placeholder='Tag Line' value={this.state.tagline} onChange={this.newTagLine} required></input>
+					<div className='title'>
+						<input className='inputs' placeholder='Recipe Name' value={this.state.name} onChange={this.newName} required/>
+						<input className='inputs' placeholder='Tag Line' value={this.state.tagline} onChange={this.newTagLine} required/>
+					</div>
 
-					<input className='inputs' placeholder='ABV'></input>
-					<input className='inputs' placeholder='IBUs'></input>
-					<input className='inputs' placeholder='Target Final Gravity'></input>
-					<input className='inputs' placeholder='Target Original Gravity'></input>
-					<input className='inputs' placeholder='EBC'></input>
-					<input className='inputs' placeholder='SRM'></input>
-					<input className='inputs' placeholder='PH'></input>
-					<input className='inputs' placeholder='Attenuation Level'></input>
-					
-					<input className='inputs' placeholder='Description'></input>
+					<div className='basicInfo'>
+						<input className='inputs' placeholder='ABV'/>
+						<input className='inputs' placeholder='IBUs'/>
+						<input className='inputs' placeholder='Target Final Gravity'/>
+						<input className='inputs' placeholder='Target Original Gravity'/>
+						<input className='inputs' placeholder='EBC'/>
+						<input className='inputs' placeholder='SRM'/>
+						<input className='inputs' placeholder='PH'/>
+						<input className='inputs' placeholder='Attenuation Level'/>
+						<input className='inputs' placeholder='Total volume in liters'/>
+					</div>
 
+					<div className='ingredients'>
+						<div className='malts'>
+							<h3>Add Malt</h3>
+							<div className='ingredientForm'>
+								<h4>Name: </h4>
+								<input className='ingredientInput' value={this.state.maltName} onChange={this.newMalt}/>
+								<h4>Amount: </h4>
+								<input className='amountInput'/>
+								<select>
+									<option>kg</option>
+									<option>oz</option>
+									<option>g</option>
+								</select>
+								<button type='button' onClick={this.submitMalt} className='addIngredient'>Add</button>
+							</div>
+							<div className='addedMalt'></div>
+						</div>
 
-					<input className='inputs' placeholder='Brewer Tips'></input>
-					<input className='inputs' placeholder='Contributed By'></input>			
+						<div className='hops'>
+							<h3>Add Hops</h3>
+							<div className='ingredientForm'>
+								<h4>Name: </h4>
+								<input className='ingredientInput'/>
+								<h4>Amount: </h4>
+								<input className='amountInput'/>
+								<select>
+									<option>g</option>
+									<option>kg</option>
+									<option>oz</option>
+								</select>
+								<button type='button' className='addIngredient'>Add</button>
+							</div>
+						</div>
 
-					<div>
-						<button type='submit' className='button'>Add Recipe</button>
-					</div>		
+					</div>
+
+					<div className='extras'>
+						<input className='inputs' placeholder='Brewer Tips'/>
+						<input className='inputs' placeholder='Contributed By'/>		
+
+						<textarea className='inputs' placeholder='Description'></textarea>
+						<button type='button' className='button'>Add Recipe</button>
+					</div>
+
 				</form>
 			</div>
 	    )

@@ -1,9 +1,52 @@
 form {
 	background-color: lightgray;
+	display: flex;
+	flex-direction: column;
 }
-.name {
+.basicInfo {
+	display: grid;
+	grid-template-columns: 200px 200px 200px;
+}
+.inputs {
 	width: 200px;
+}
+.ingredients {
+	display: flex;
+}
+.ingredientInput {
+	height: 18px;
+	width: 200px;
+}
+.amountInput {
 	height: 20px;
+	width: 30px;
+}
+.malts {
+	border: 2px solid black;
+}
+.hops {
+	border: 2px solid black;
+}
+h3 {
+	margin: 10px;
+}
+.ingredientForm {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+.ingredientForm h4 {
+	margin: 0 10px;
+}
+.ingredientForm select {
+	margin: 0 10px;
+}
+.addIngredient {
+
+}
+.extras {
+	display: flex;
 }
 .button {
 	width: 200px;
