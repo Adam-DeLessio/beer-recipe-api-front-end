@@ -1,3 +1,11 @@
 .tagline {
 	font-size: 18px;
 }
+.ingredients {
+	display: flex;
+	flex-direction: column;
+	border: 2px solid black;
+	width: 40vw;
+	margin: 20px;
+	/*padding: 10px;*/
+}
