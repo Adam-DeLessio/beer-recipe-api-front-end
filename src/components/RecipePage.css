@@ -1,6 +1,9 @@
 .tagline {
 	font-size: 18px;
 }
+.container {
+	display: flex;
+}
 .ingredients {
 	display: flex;
 	flex-direction: column;
@@ -8,4 +11,14 @@
 	width: 40vw;
 	margin: 20px;
 	/*padding: 10px;*/
+}
+.process {
+	display: flex;
+	flex-direction: column;
+	border: 2px solid black;
+	width: 40vw;
+	margin: 20px;
+}
+span {
+	font-weight: bold;
 }
