@@ -14,8 +14,17 @@ header {
 	line-height: 90px;
 	text-align: center;
 	font-size: 80px;
-	font-family: 'Italianno'
+	font-family: 'Italianno';
+	animation-name: fadeIn;
+	animation-duration: 5s;
 }
 .TJ {
 	margin: 0;
+	animation-name: fadeIn;
+	animation-duration: 6s;
 }
+@keyframes fadeIn {
+	0% {color: lightgray;}
+	100% {color: black;}
+}
+

@@ -10,8 +10,10 @@ class RecipePage extends Component {
 		this.state = {
 			recipe: '',
       volume: '',
+      volumeUnit: '',
       boilVolume: '',
-      fermentation: '',
+      ferment: '',
+      fermentUnit: '',
       mashTime: '',
       mashValue: '',
       malt: [],
@@ -29,9 +31,11 @@ class RecipePage extends Component {
       .then(res => res.json())
       .then(res => {
       	this.setState({ recipe: res[0] })
-        this.setState({ volume: res[0].volume })
+        this.setState({ volume: res[0].volume.value })
+        this.setState({ volumeUnit: res[0].volume.unit })
         this.setState({ boilVolume: res[0].boil_volume })
-        this.setState({ fermentation: res[0].method.fermentation.temp })
+        this.setState({ ferment: res[0].method.fermentation.temp.value })
+        this.setState({ fermentUnit: res[0].method.fermentation.temp.unit })
         this.setState({ mashTime: res[0].method.mash_temp[0] })
         this.setState({ mashValue: res[0].method.mash_temp[0].temp })
         this.setState({ malt: res[0].ingredients.malt })
@@ -89,9 +93,9 @@ class RecipePage extends Component {
             <h3>Mash</h3>
             <p>Mash for {this.state.mashTime.duration} minutes at {this.state.mashValue.value}° {this.state.mashValue.unit}</p>
             <h3>Ferment</h3>
-            <p>Ferment at {this.state.fermentation.value}° {this.state.fermentation.unit}</p>
+            <p>Ferment at {this.state.ferment}° {this.state.fermentUnit}</p>
             <h3>Final Volume</h3>
-            <p>{this.state.volume.value} {this.state.volume.unit}</p>
+            <p>{this.state.volume} {this.state.volumeUnit}</p>
           </section>
         </div>
 
@@ -101,6 +105,8 @@ class RecipePage extends Component {
 }
 
 export default RecipePage
+
+
 
 
 

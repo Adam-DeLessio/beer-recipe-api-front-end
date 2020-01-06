@@ -35,11 +35,21 @@ class Add extends Component {
 		event.preventDefault()
 		const newRecipe = {
 			name: this.state.name,
-			tagline: this.state.tagline
+			tagline: this.state.tagline,
+			ingredients: {
+				malt: [
+					this.state.maltList
+				]
+			}
 		}
 		Axios.post('https://beer-recipe-api.herokuapp.com/Add', newRecipe).then(res => console.log(res))
 
 		this.setState({ name: '' })
+		this.setState({ tagline: '' })
+		this.setState({ maltName: '' })
+		this.setState({ maltAmount: ''})
+		this.setState({ maltUnit: '' })
+		this.setState({ maltList: [] })
 	}
 
 	newMaltName(event) {
@@ -50,23 +60,26 @@ class Add extends Component {
 	}
 	submitMalt(event) {
 		event.preventDefault()
-		let newMalt = `Name: ${this.state.maltName} Amount: ${this.state.maltAmount}`
+		let newMalt = `${this.state.maltName} ${this.state.maltAmount}`
 		this.setState({ maltList: [...this.state.maltList, newMalt] })
-
-		// let createMalt = React.createElement('div', {}, this.state.maltName)
-		// ReactDOM.render(createMalt, document.getElementById('addedMalt'))
 		this.setState({ maltName: '' })
 		this.setState({ maltAmount: '' })
+
 	}
 
 
 	render() {
+		let maltArray = this.state.maltList.map(malt => {
+			return(
+				<p>{malt}</p>
+			)
+		})
 		return(
 			<div>
 				<form onSubmit={this.onSubmit}>
 					<div className='title'>
-						<input className='inputs' placeholder='Recipe Name' value={this.state.name} onChange={this.newName} required/>
-						<input className='inputs' placeholder='Tag Line' value={this.state.tagline} onChange={this.newTagLine} required/>
+						<input className='titleInputs' placeholder='Recipe Name' value={this.state.name} onChange={this.newName} required/>
+						<input className='titleInputs' placeholder='Tag Line' value={this.state.tagline} onChange={this.newTagLine} required/>
 					</div>
 
 					<div className='basicInfo'>
@@ -86,9 +99,9 @@ class Add extends Component {
 							<h3>Add Malt</h3>
 							<div className='ingredientForm'>
 								<h4>Name: </h4>
-								<input className='ingredientInput' placeholder='Malt Name' value={this.state.maltName} onChange={this.newMaltName} />
+								<input className='ingredientInput' placeholder='Malt Name' value={this.state.maltName} onChange={this.newMaltName} required/>
 								<h4>Amount: </h4>
-								<input className='amountInput' placeholder='Amt' value={this.state.maltAmount} onChange={this.newMaltAmount} />
+								<input className='amountInput' placeholder='Amt' value={this.state.maltAmount} onChange={this.newMaltAmount} required />
 								<select>
 									<option>kg</option>
 									<option>oz</option>
@@ -96,16 +109,16 @@ class Add extends Component {
 								</select>
 								<button type='button' onClick={this.submitMalt} className='addIngredient'>Add</button>
 							</div>
-							<div id='addedMalt' className='addedMalt'>{this.state.maltList}</div>
+							<div id='addedMalt' className='addedMalt'>{maltArray}</div>
 						</div>
 
 						<div className='hops'>
 							<h3>Add Hops</h3>
 							<div className='ingredientForm'>
 								<h4>Name: </h4>
-								<input className='ingredientInput'/>
+								<input className='ingredientInput' placeholder='Hops Name' />
 								<h4>Amount: </h4>
-								<input className='amountInput'/>
+								<input className='amountInput' placeholder='Amt' />
 								<select>
 									<option>g</option>
 									<option>kg</option>
@@ -115,14 +128,24 @@ class Add extends Component {
 							</div>
 						</div>
 
+						<div className='yeast'>
+							<h3>Add Yeast</h3>
+							<input className='ingredientInput' placeholder='Yeast' />
+						</div>
+
 					</div>
 
 					<div className='extras'>
-						<input className='inputs' placeholder='Brewer Tips'/>
-						<input className='inputs' placeholder='Contributed By'/>		
+						<textarea className='textarea' placeholder='Brewer Tips'></textarea>
+						<textarea className='textarea' placeholder='Description'></textarea>
+							
+					</div>
 
-						<textarea className='inputs' placeholder='Description'></textarea>
-						<button type='button' className='button'>Add Recipe</button>
+					<input className='contributed' placeholder='Contributed By'/>
+
+					<div>
+						
+						<button type='submit' className='button'>Add Recipe</button>
 					</div>
 
 				</form>

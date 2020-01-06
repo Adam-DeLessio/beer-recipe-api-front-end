@@ -7,18 +7,11 @@ import Home from './components/Home'
 import Add from './components/Add'
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {}
-  // }
-
   render() {
     return(
       <div className='appContainer'>
         <nav>
-          <Link className='home' to={'/'}>
-            <h2>Home</h2>
-          </Link>
+
           <Link className='recipes' to={'/Recipe'}>
             <h2>Recipes</h2>
           </Link>
@@ -55,8 +48,11 @@ class App extends Component {
   }
 }
 
-
-
+/*
+          <Link className='home' to={'/'}>
+            <h2>Home</h2>
+          </Link>
+*/
 
 
 export default App;

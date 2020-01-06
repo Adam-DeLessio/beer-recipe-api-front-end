@@ -3,6 +3,7 @@ nav {
   height: 10vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .home {
   text-decoration: none;
@@ -17,6 +18,5 @@ nav {
 h2 {
   text-decoration: none;
   color: white;
-  margin: 0;
-  margin-left: 30px;
+  margin: 0 50px;
 }
